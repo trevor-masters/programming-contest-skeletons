@@ -60,7 +60,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 public class ContestProblem {
-	class ContestTools extends PrintWriter {
+	static class ContestTools extends PrintWriter {
 		private BufferedReader r;
 		public ContestTools() {
 			super(new BufferedOutputStream(System.out));
@@ -129,11 +129,13 @@ public class ContestProblem {
 	
 	public static void main(String[] args) {
 		ContestProblem stuff = new ContestProblem();
-		stuff.run();
+		ContestTools tools = new ContestTools();
+		stuff.run(tools);
+		// Must close the tool at the end to ensure that any buffered output is printed
+		tools.close();
 	}
 	
-	public void run() {
-		ContestTools tools = new ContestTools();
+	public void run(ContestTools tools) {
 		// YOUR CODE GOES HERE
 		
 		// Example code:
@@ -142,8 +144,5 @@ public class ContestProblem {
 		// while ((line = tools.readLine()) != null) {
 		//  	tools.println("Hello, World!");
 		// }
-		
-		// Must close the tool at the end to ensure that any buffered output is printed
-		tools.close();
 	}
 }
